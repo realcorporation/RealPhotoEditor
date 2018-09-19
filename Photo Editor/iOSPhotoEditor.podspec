@@ -11,9 +11,9 @@ with the ability to scale and rotate objects
   s.homepage         = 'https://github.com/M-Hamed/photo-editor'
   s.license          = { :type => 'MIT', :file => 'LICENSE.md' }
   s.author           = { 'Mohamed Hamed' => 'mohamed.hamed.ibrahem@gmail.com' }
-  s.source           = { :git => 'https://github.com/M-Hamed/photo-editor.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/realcorporation/photo-editor.git', :tag => s.version.to_s }
  
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
   s.source_files = "Photo Editor/**/*.{swift}"
   s.exclude_files = "Photo Editor/**/AppDelegate.swift"
   s.resources = "Photo Editor/**/*.{png,jpeg,jpg,storyboard,xib,ttf}"
