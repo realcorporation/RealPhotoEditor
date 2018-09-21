@@ -69,6 +69,15 @@ public final class PhotoEditorViewController: UIViewController {
     var imageViewToPan: UIImageView?
     var isTyping: Bool = false
     
+    // Customisation
+    var maxTextViewHeight: CGFloat = 300
+    var textCenterXAnchor: NSLayoutConstraint?
+    var textCenterYAnchor: NSLayoutConstraint?
+    var textViewWidth: NSLayoutConstraint?
+    var textViewHeight: NSLayoutConstraint?
+    var currentTextView: UITextView?
+    var currentFontSize: CGFloat = 30
+    var currentFontName: String = "BarlowCondensed-Regular"
     
     var stickersViewController: StickersViewController!
 

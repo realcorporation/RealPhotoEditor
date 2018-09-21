@@ -46,8 +46,6 @@
 		3C3D12DC215255E300A79F0C /* PhotoCropEditorBorder@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 056513311EF489C0009EA38F /* PhotoCropEditorBorder@3x.png */; };
 		3C3D12DD215255E300A79F0C /* StickerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056513321EF489C0009EA38F /* StickerCollectionViewCell.xib */; };
 		3C3D12DE215255E300A79F0C /* PhotoEditorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 056513331EF489C0009EA38F /* PhotoEditorViewController.xib */; };
-		3C8A2C7121549DDB0094ED16 /* REGrowingInternalTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A2C6E21549DDB0094ED16 /* REGrowingInternalTextView.swift */; };
-		3C8A2C7321549DDB0094ED16 /* REGrowingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C8A2C6F21549DDB0094ED16 /* REGrowingTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,8 +101,6 @@
 		3C3D129A215253BB00A79F0C /* REPhotoEditorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = REPhotoEditorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C3D12A1215253BB00A79F0C /* REPhotoEditorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = REPhotoEditorTests.swift; sourceTree = "<group>"; };
 		3C3D12A3215253BB00A79F0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3C8A2C6E21549DDB0094ED16 /* REGrowingInternalTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REGrowingInternalTextView.swift; sourceTree = "<group>"; };
-		3C8A2C6F21549DDB0094ED16 /* REGrowingTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = REGrowingTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,8 +155,6 @@
 				0565130D1EF489B4009EA38F /* EmojisCollectionViewDelegate.swift */,
 				056513131EF489B4009EA38F /* GradientView.swift */,
 				0565132D1EF489C0009EA38F /* icomoon.ttf */,
-				3C8A2C6E21549DDB0094ED16 /* REGrowingInternalTextView.swift */,
-				3C8A2C6F21549DDB0094ED16 /* REGrowingTextView.swift */,
 				0565132F1EF489C0009EA38F /* PhotoCropEditorBorder.png */,
 				056513301EF489C0009EA38F /* PhotoCropEditorBorder@2x.png */,
 				056513311EF489C0009EA38F /* PhotoCropEditorBorder@3x.png */,
@@ -348,9 +342,7 @@
 				3C3D12C7215255CE00A79F0C /* GradientView.swift in Sources */,
 				3C3D12C8215255CE00A79F0C /* CropView.swift in Sources */,
 				3C3D12C9215255CE00A79F0C /* CropRectView.swift in Sources */,
-				3C8A2C7321549DDB0094ED16 /* REGrowingTextView.swift in Sources */,
 				3C3D12CA215255CE00A79F0C /* CropViewController.swift in Sources */,
-				3C8A2C7121549DDB0094ED16 /* REGrowingInternalTextView.swift in Sources */,
 				3C3D12CB215255CE00A79F0C /* UIImage+Crop.swift in Sources */,
 				3C3D12CC215255CE00A79F0C /* ResizeControl.swift in Sources */,
 				3C3D12CD215255CE00A79F0C /* PhotoEditor+Gestures.swift in Sources */,

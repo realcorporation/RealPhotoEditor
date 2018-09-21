@@ -15,8 +15,42 @@ extension PhotoEditorViewController: UITextViewDelegate {
         let rotation = atan2(textView.transform.b, textView.transform.a)
         if rotation == 0 {
             let oldFrame = textView.frame
-            let sizeToFit = textView.sizeThatFits(CGSize(width: oldFrame.width, height:CGFloat.greatestFiniteMagnitude))
+            var sizeToFit = textView.sizeThatFits(CGSize(width: oldFrame.width, height:CGFloat.greatestFiniteMagnitude))
+            
+            
+            if sizeToFit.height > maxTextViewHeight {
+                var sizeToFit2 = textView.sizeThatFits(CGSize(width: oldFrame.width, height:CGFloat.greatestFiniteMagnitude))
+                sizeToFit.height = maxTextViewHeight
+                
+                if let font = textView.font {
+//                    let lineHeight = font.capHeight + font.lineHeight
+                    let lineHeight = font.lineHeight
+                    
+                    let preLineNumber = sizeToFit2.height / lineHeight
+                    
+                    print("1=\(font.descender);2=\(font.ascender);3=\(font.pointSize);4=\(font.capHeight);5=\(font.xHeight);6=\(font.lineHeight);")
+                    print("lineNumber=\(preLineNumber).currentFontSize=\(currentFontSize);sizeToFit.height=\(sizeToFit.height);lineHeight=\(lineHeight)")
+                    print("sizeToFit2=\(sizeToFit2.height)")
+                    currentFontSize = preLineNumber
+                    textView.font = UIFont(name: currentFontName, size: preLineNumber)
+                }
+
+            } else {
+//                currentFontSize = 30
+                
+//                if let font = textView.font {
+//                    let lineHeight = font.xHeight
+//
+//                    let preLineNumber = sizeToFit.height / lineHeight
+//                    print("lineNumber=\(preLineNumber)")
+//                    currentFontSize = preLineNumber
+                    textView.font = UIFont(name: currentFontName, size: currentFontSize)
+//                }
+            }
+            
             textView.frame.size = CGSize(width: oldFrame.width, height: sizeToFit.height)
+            
+//            textView.font = UIFont(name: currentFontName, size: currentFontSize)
         }
     }
     public func textViewDidBeginEditing(_ textView: UITextView) {
@@ -26,7 +60,7 @@ extension PhotoEditorViewController: UITextViewDelegate {
         lastTextViewFont = textView.font!
         activeTextView = textView
         textView.superview?.bringSubviewToFront(textView)
-        textView.font = UIFont(name: "BarlowCondensed-Regular", size: 30)
+        textView.font = UIFont(name: currentFontName, size: currentFontSize)
         UIView.animate(withDuration: 0.3,
                        animations: {
                         textView.transform = CGAffineTransform.identity

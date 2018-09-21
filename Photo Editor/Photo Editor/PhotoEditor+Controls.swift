@@ -54,8 +54,9 @@ extension PhotoEditorViewController {
         let textView = UITextView(frame: CGRect(x: 0, y: canvasImageView.center.y,
                                                 width: UIScreen.main.bounds.width, height: 30))
         
+        currentFontSize = 30
         textView.textAlignment = .center
-        textView.font = UIFont(name: "BarlowCondensed-Regular", size: 30)
+        textView.font = UIFont(name: currentFontName, size: currentFontSize)
         textView.textColor = textColor
         textView.layer.shadowColor = UIColor.black.cgColor
         textView.layer.shadowOffset = CGSize(width: 1.0, height: 0.0)
@@ -65,10 +66,14 @@ extension PhotoEditorViewController {
         textView.autocorrectionType = .no
         textView.isScrollEnabled = false
         textView.delegate = self
+        
         self.canvasImageView.addSubview(textView)
+        
+        currentTextView = textView
+        
         addGestures(view: textView)
         textView.becomeFirstResponder()
-    }    
+    }
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         view.endEditing(true)
