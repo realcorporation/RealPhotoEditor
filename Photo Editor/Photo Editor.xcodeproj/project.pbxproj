@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3C34B1292154D37400CEA45D /* BarlowCondensed-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C34B1282154D37400CEA45D /* BarlowCondensed-Italic.ttf */; };
+		3C34B12B2154D6AE00CEA45D /* BarlowCondensed-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3C34B12A2154D38900CEA45D /* BarlowCondensed-Regular.ttf */; };
 		3C3D129B215253BB00A79F0C /* REPhotoEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3D1292215253BB00A79F0C /* REPhotoEditor.framework */; };
 		3C3D12A2215253BB00A79F0C /* REPhotoEditorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3C3D12A1215253BB00A79F0C /* REPhotoEditorTests.swift */; };
 		3C3D12A4215253BB00A79F0C /* REPhotoEditor.h in Headers */ = {isa = PBXBuildFile; fileRef = 3C3D1294215253BB00A79F0C /* REPhotoEditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -93,6 +95,8 @@
 		056513431EF489CD009EA38F /* PhotoEditor+Controls.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoEditor+Controls.swift"; sourceTree = "<group>"; };
 		056513441EF489CD009EA38F /* PhotoEditor+Crop.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoEditor+Crop.swift"; sourceTree = "<group>"; };
 		056513451EF489CD009EA38F /* PhotoEditor+Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PhotoEditor+Font.swift"; sourceTree = "<group>"; };
+		3C34B1282154D37400CEA45D /* BarlowCondensed-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowCondensed-Italic.ttf"; sourceTree = "<group>"; };
+		3C34B12A2154D38900CEA45D /* BarlowCondensed-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "BarlowCondensed-Regular.ttf"; sourceTree = "<group>"; };
 		3C3D1292215253BB00A79F0C /* REPhotoEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = REPhotoEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3C3D1294215253BB00A79F0C /* REPhotoEditor.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = REPhotoEditor.h; sourceTree = "<group>"; };
 		3C3D1295215253BB00A79F0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 		3C3D1293215253BB00A79F0C /* REPhotoEditor */ = {
 			isa = PBXGroup;
 			children = (
+				3C34B1282154D37400CEA45D /* BarlowCondensed-Italic.ttf */,
+				3C34B12A2154D38900CEA45D /* BarlowCondensed-Regular.ttf */,
 				3C3D1294215253BB00A79F0C /* REPhotoEditor.h */,
 				3C3D1295215253BB00A79F0C /* Info.plist */,
 			);
@@ -303,11 +309,13 @@
 				3C3D12D5215255E300A79F0C /* StickersViewController.xib in Resources */,
 				3C3D12D6215255E300A79F0C /* ColorCollectionViewCell.xib in Resources */,
 				3C3D12D7215255E300A79F0C /* EmojiCollectionViewCell.xib in Resources */,
+				3C34B1292154D37400CEA45D /* BarlowCondensed-Italic.ttf in Resources */,
 				3C3D12D8215255E300A79F0C /* icomoon.ttf in Resources */,
 				3C3D12DA215255E300A79F0C /* PhotoCropEditorBorder.png in Resources */,
 				3C3D12DB215255E300A79F0C /* PhotoCropEditorBorder@2x.png in Resources */,
 				3C3D12DC215255E300A79F0C /* PhotoCropEditorBorder@3x.png in Resources */,
 				3C3D12DD215255E300A79F0C /* StickerCollectionViewCell.xib in Resources */,
+				3C34B12B2154D6AE00CEA45D /* BarlowCondensed-Regular.ttf in Resources */,
 				3C3D12DE215255E300A79F0C /* PhotoEditorViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,9 +14,17 @@ extension PhotoEditorViewController {
     //Resources don't load in main bundle we have to register the font
     func registerFont(){
         let bundle = Bundle(for: PhotoEditorViewController.self)
-        let url =  bundle.url(forResource: "icomoon", withExtension: "ttf")
+        let urls = ["icomoon", "BarlowCondensed-Regular", "BarlowCondensed-Italic"]
         
-        guard let fontDataProvider = CGDataProvider(url: url! as CFURL) else {
+        for ttfName in urls {
+            if let url =  bundle.url(forResource: ttfName, withExtension: "ttf") {
+                registerFont(url: url)
+            }
+        }
+    }
+    
+    func registerFont(url: URL){
+        guard let fontDataProvider = CGDataProvider(url: url as CFURL) else {
             return
         }
         
