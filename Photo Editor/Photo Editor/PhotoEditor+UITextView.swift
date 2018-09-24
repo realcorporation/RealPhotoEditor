@@ -11,6 +11,7 @@ import UIKit
 
 extension PhotoEditorViewController: UITextViewDelegate {
     static let maxFontSize: CGFloat = 170
+    static var previousRect: CGRect?
     
     public func textViewDidChange(_ textView: UITextView) {
         let rotation = atan2(textView.transform.b, textView.transform.a)
@@ -30,6 +31,16 @@ extension PhotoEditorViewController: UITextViewDelegate {
                     index = NSMaxRange(lineRange)
                     numberOfLines = numberOfLines + 1
                 }
+                
+                var position = textView.endOfDocument
+                var currentRect = textView.caretRect(for: position)
+                if let previousRect = PhotoEditorViewController.previousRect {
+                    if currentRect.origin.y > previousRect.origin.y {
+                        numberOfLines = numberOfLines + 1
+                    }
+                }
+                
+                PhotoEditorViewController.previousRect = currentRect
                 
                 let lineDiffs: CGFloat = 16;// sizeToFit.height - (font.lineHeight * numberOfLines)
                 var calFont = (maxTextViewHeight - lineDiffs) / numberOfLines - (font.descender * -1) - font.leading
