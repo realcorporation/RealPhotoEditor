@@ -146,4 +146,20 @@ extension PhotoEditorViewController: UITextViewDelegate {
         let value: CGFloat = CGFloat(sizeBar.value)
         activeTextView?.font = UIFont(name: currentFontName, size: currentFontSize * value)
     }
+    
+    @IBAction func clickChangeAlignment(sender: UIButton) {
+        changeAlignment()
+    }
+    
+    private func changeAlignment() {
+        if let activeTextView = activeTextView {
+            if activeTextView.textAlignment == NSTextAlignment.center {
+                activeTextView.textAlignment = NSTextAlignment.left
+            } else if activeTextView.textAlignment == NSTextAlignment.left {
+                activeTextView.textAlignment = NSTextAlignment.right
+            } else {
+                activeTextView.textAlignment = NSTextAlignment.center
+            }
+        }
+    }
 }
