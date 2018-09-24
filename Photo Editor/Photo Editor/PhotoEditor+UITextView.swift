@@ -126,4 +126,10 @@ extension PhotoEditorViewController: UITextViewDelegate {
         }, completion: nil)
     }
     
+    @IBAction func sizeChanged(sender: UISlider) {
+        if let activeTextView = activeTextView {
+            let value: CGFloat = CGFloat(sender.value)
+            activeTextView.font = UIFont(name: currentFontName, size: currentFontSize * value)
+        }
+    }
 }
