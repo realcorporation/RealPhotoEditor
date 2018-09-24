@@ -79,6 +79,7 @@ public final class PhotoEditorViewController: UIViewController {
     var currentTextView: UITextView?
     var currentFontSize: CGFloat = 30
     var currentFontName: String = "BarlowCondensed-Regular"
+    var currentTextViewTransformSaved: CGAffineTransform?
     
     var stickersViewController: StickersViewController!
 

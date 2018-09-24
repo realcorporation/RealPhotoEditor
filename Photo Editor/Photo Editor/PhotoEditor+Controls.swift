@@ -75,6 +75,15 @@ extension PhotoEditorViewController {
         textView.becomeFirstResponder()
     }
     
+    func editText(textView: UITextView) {
+        textView.transform = CGAffineTransform.identity
+        textView.frame = CGRect(x: 0, y: canvasImageView.center.y,
+                                width: UIScreen.main.bounds.width, height: maxTextViewHeight)
+        
+        currentTextView = textView
+        textView.becomeFirstResponder()
+    }
+    
     @IBAction func doneButtonTapped(_ sender: Any) {
         view.endEditing(true)
         doneButton.isHidden = true

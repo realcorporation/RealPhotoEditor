@@ -100,7 +100,12 @@ extension PhotoEditorViewController : UIGestureRecognizerDelegate  {
                     }
                 }
             } else {
-                scaleEffect(view: view)
+                if view is UITextView, let textView = view as? UITextView {
+                    currentTextViewTransformSaved = textView.transform
+                    editText(textView: textView)
+                } else {
+                    scaleEffect(view: view)
+                }
             }
         }
     }
