@@ -257,6 +257,17 @@
                         <action selector="sizeChangedWithSender:" destination="-1" eventType="valueChanged" id="gQY-S0-8RG"/>
                     </connections>
                 </slider>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9sd-w7-WUV">
+                    <rect key="frame" x="20" y="130" width="88" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="REC-rO-6Kr"/>
+                        <constraint firstAttribute="width" constant="88" id="uLM-rm-Q3i"/>
+                    </constraints>
+                    <state key="normal" title="Change Font"/>
+                    <connections>
+                        <action selector="clickChangeFontNameWithSender:" destination="-1" eventType="touchUpInside" id="WLb-Kw-qx4"/>
+                    </connections>
+                </button>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yAt-sK-1nK">
                     <rect key="frame" x="162.5" y="605" width="50" height="50"/>
                     <subviews>
@@ -312,6 +323,7 @@
                 <constraint firstItem="S1Y-ZS-dct" firstAttribute="leading" secondItem="HPk-Bg-V0q" secondAttribute="leading" id="2tC-2e-oA6"/>
                 <constraint firstItem="Cy8-ap-fH9" firstAttribute="leading" secondItem="HPk-Bg-V0q" secondAttribute="leading" id="6eK-mF-0OL"/>
                 <constraint firstItem="3MS-N5-3xY" firstAttribute="top" secondItem="HPk-Bg-V0q" secondAttribute="top" id="Fj6-PW-wbF"/>
+                <constraint firstItem="9sd-w7-WUV" firstAttribute="leading" secondItem="HPk-Bg-V0q" secondAttribute="leading" constant="20" id="GBf-87-5fl"/>
                 <constraint firstAttribute="trailing" secondItem="3MS-N5-3xY" secondAttribute="trailing" id="M86-Ia-XcZ"/>
                 <constraint firstItem="rLz-36-0xz" firstAttribute="top" secondItem="HPk-Bg-V0q" secondAttribute="top" id="RYD-1T-XNJ"/>
                 <constraint firstItem="3al-Ex-zJz" firstAttribute="leading" secondItem="HPk-Bg-V0q" secondAttribute="leading" constant="20" id="S95-J5-u26"/>
@@ -321,6 +333,7 @@
                 <constraint firstItem="ZGa-1B-gkO" firstAttribute="leading" secondItem="HPk-Bg-V0q" secondAttribute="leading" id="YYk-Vg-obo"/>
                 <constraint firstAttribute="trailing" secondItem="KxU-y4-Jwh" secondAttribute="trailing" constant="12" id="Z0h-d5-J2Z"/>
                 <constraint firstAttribute="trailing" secondItem="Cy8-ap-fH9" secondAttribute="trailing" id="dlF-iN-Gjg"/>
+                <constraint firstItem="9sd-w7-WUV" firstAttribute="top" secondItem="3al-Ex-zJz" secondAttribute="bottom" constant="20" id="ic1-pH-wKU"/>
                 <constraint firstAttribute="trailing" secondItem="S1Y-ZS-dct" secondAttribute="trailing" id="jwU-EC-jaR"/>
                 <constraint firstAttribute="trailing" secondItem="87h-1G-t5q" secondAttribute="trailing" id="kaD-bR-ZZt"/>
                 <constraint firstItem="S1Y-ZS-dct" firstAttribute="centerY" secondItem="HPk-Bg-V0q" secondAttribute="centerY" id="lCZ-Hj-EUs"/>

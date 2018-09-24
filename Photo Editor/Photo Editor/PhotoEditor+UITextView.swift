@@ -132,4 +132,18 @@ extension PhotoEditorViewController: UITextViewDelegate {
             activeTextView.font = UIFont(name: currentFontName, size: currentFontSize * value)
         }
     }
+    
+    @IBAction func clickChangeFontName(sender: UIButton) {
+        changeFontName()
+    }
+    
+    private func changeFontName() {
+        if currentFontName == "BarlowCondensed-Regular" {
+            currentFontName = "BarlowCondensed-Italic"
+        } else {
+            currentFontName = "BarlowCondensed-Regular"
+        }
+        let value: CGFloat = CGFloat(sizeBar.value)
+        activeTextView?.font = UIFont(name: currentFontName, size: currentFontSize * value)
+    }
 }
