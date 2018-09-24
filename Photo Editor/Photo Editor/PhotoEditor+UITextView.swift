@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 
 extension PhotoEditorViewController: UITextViewDelegate {
+    static let maxFontSize: CGFloat = 170
     
     public func textViewDidChange(_ textView: UITextView) {
         let rotation = atan2(textView.transform.b, textView.transform.a)
@@ -17,36 +18,69 @@ extension PhotoEditorViewController: UITextViewDelegate {
             let oldFrame = textView.frame
             var sizeToFit = textView.sizeThatFits(CGSize(width: oldFrame.width, height:CGFloat.greatestFiniteMagnitude))
             
-            if sizeToFit.height > maxTextViewHeight {
-                if let font = textView.font {
-                    let layoutManager: NSLayoutManager = textView.layoutManager
-                    let numberOfGlyphs = layoutManager.numberOfGlyphs
-                    var numberOfLines: CGFloat = 0
-                    var index = 0
-                    var lineRange: NSRange = NSRange()
-                    
-                    while (index < numberOfGlyphs) {
-                        layoutManager.lineFragmentRect(forGlyphAt: index, effectiveRange: &lineRange)
-                        index = NSMaxRange(lineRange)
-                        numberOfLines = numberOfLines + 1
-                    }
-                    
-                    let lineDiffs = sizeToFit.height - (font.lineHeight * numberOfLines)
-                    
-                    
-                    let lineHeight: CGFloat = (maxTextViewHeight - lineDiffs) / numberOfLines
-                    let updatedFontAscender = lineHeight - (font.descender * -1) - font.leading
-                    
-                    currentFontSize = updatedFontAscender
-                    textView.font = UIFont(name: currentFontName, size: currentFontSize)
+            if let font = textView.font {
+                let layoutManager: NSLayoutManager = textView.layoutManager
+                let numberOfGlyphs = layoutManager.numberOfGlyphs
+                var numberOfLines: CGFloat = 0
+                var index = 0
+                var lineRange: NSRange = NSRange()
+                
+                while (index < numberOfGlyphs) {
+                    layoutManager.lineFragmentRect(forGlyphAt: index, effectiveRange: &lineRange)
+                    index = NSMaxRange(lineRange)
+                    numberOfLines = numberOfLines + 1
                 }
-
-                sizeToFit.height = maxTextViewHeight
-            } else {
+                
+                let lineDiffs: CGFloat = 16;// sizeToFit.height - (font.lineHeight * numberOfLines)
+                var calFont = (maxTextViewHeight - lineDiffs) / numberOfLines - (font.descender * -1) - font.leading
+                if calFont >= PhotoEditorViewController.maxFontSize {
+                    calFont = PhotoEditorViewController.maxFontSize
+                }
+                
+                currentFontSize = calFont
                 textView.font = UIFont(name: currentFontName, size: currentFontSize)
+                self.lastTextViewFont = textView.font
+                print("edit font=\(currentFontSize);numberOfLines=\(numberOfLines);lineDiffs=\(lineDiffs)")
             }
             
-            textView.frame.size = CGSize(width: oldFrame.width, height: sizeToFit.height)
+//            if sizeToFit.height > maxTextViewHeight {
+//                if let font = textView.font {
+//                    let layoutManager: NSLayoutManager = textView.layoutManager
+//                    let numberOfGlyphs = layoutManager.numberOfGlyphs
+//                    var numberOfLines: CGFloat = 0
+//                    var index = 0
+//                    var lineRange: NSRange = NSRange()
+//
+//                    while (index < numberOfGlyphs) {
+//                        layoutManager.lineFragmentRect(forGlyphAt: index, effectiveRange: &lineRange)
+//                        index = NSMaxRange(lineRange)
+//                        numberOfLines = numberOfLines + 1
+//                    }
+//
+//                    let lineDiffs = sizeToFit.height - (font.lineHeight * numberOfLines)
+//
+//
+//                    let lineHeight: CGFloat = (maxTextViewHeight - lineDiffs) / numberOfLines
+//                    let updatedFontAscender = lineHeight - (font.descender * -1) - font.leading
+//
+//
+//                    var calFont = (maxTextViewHeight - lineDiffs) / numberOfLines - (font.descender * -1) - font.leading
+//                    if calFont >= PhotoEditorViewController.maxFontSize {
+//                        calFont = PhotoEditorViewController.maxFontSize
+//                    }
+//
+//
+//                    currentFontSize = updatedFontAscender
+//                    textView.font = UIFont(name: currentFontName, size: currentFontSize)
+//                }
+//
+//                sizeToFit.height = maxTextViewHeight
+//            } else {
+//                textView.font = UIFont(name: currentFontName, size: currentFontSize)
+//            }
+            
+            var sizeToFit2 = textView.sizeThatFits(CGSize(width: oldFrame.width, height:CGFloat.greatestFiniteMagnitude))
+            textView.frame.size = CGSize(width: oldFrame.width, height: sizeToFit2.height)
         }
     }
     public func textViewDidBeginEditing(_ textView: UITextView) {
@@ -73,6 +107,7 @@ extension PhotoEditorViewController: UITextViewDelegate {
         }
         activeTextView = nil
         textView.font = self.lastTextViewFont!
+        print("done font=\(String(describing: textView.font))")
         UIView.animate(withDuration: 0.3,
                        animations: {
                         textView.transform = self.lastTextViewTransform!
