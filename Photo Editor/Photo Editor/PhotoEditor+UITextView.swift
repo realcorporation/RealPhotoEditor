@@ -17,40 +17,36 @@ extension PhotoEditorViewController: UITextViewDelegate {
             let oldFrame = textView.frame
             var sizeToFit = textView.sizeThatFits(CGSize(width: oldFrame.width, height:CGFloat.greatestFiniteMagnitude))
             
-            
             if sizeToFit.height > maxTextViewHeight {
-                var sizeToFit2 = textView.sizeThatFits(CGSize(width: oldFrame.width, height:CGFloat.greatestFiniteMagnitude))
-                sizeToFit.height = maxTextViewHeight
-                
                 if let font = textView.font {
-//                    let lineHeight = font.capHeight + font.lineHeight
-                    let lineHeight = font.lineHeight
+                    let layoutManager: NSLayoutManager = textView.layoutManager
+                    let numberOfGlyphs = layoutManager.numberOfGlyphs
+                    var numberOfLines: CGFloat = 0
+                    var index = 0
+                    var lineRange: NSRange = NSRange()
                     
-                    let preLineNumber = sizeToFit2.height / lineHeight
+                    while (index < numberOfGlyphs) {
+                        layoutManager.lineFragmentRect(forGlyphAt: index, effectiveRange: &lineRange)
+                        index = NSMaxRange(lineRange)
+                        numberOfLines = numberOfLines + 1
+                    }
                     
-                    print("1=\(font.descender);2=\(font.ascender);3=\(font.pointSize);4=\(font.capHeight);5=\(font.xHeight);6=\(font.lineHeight);")
-                    print("lineNumber=\(preLineNumber).currentFontSize=\(currentFontSize);sizeToFit.height=\(sizeToFit.height);lineHeight=\(lineHeight)")
-                    print("sizeToFit2=\(sizeToFit2.height)")
-                    currentFontSize = preLineNumber
-                    textView.font = UIFont(name: currentFontName, size: preLineNumber)
+                    let lineDiffs = sizeToFit.height - (font.lineHeight * numberOfLines)
+                    
+                    
+                    let lineHeight: CGFloat = (maxTextViewHeight - lineDiffs) / numberOfLines
+                    let updatedFontAscender = lineHeight - (font.descender * -1) - font.leading
+                    
+                    currentFontSize = updatedFontAscender
+                    textView.font = UIFont(name: currentFontName, size: currentFontSize)
                 }
 
+                sizeToFit.height = maxTextViewHeight
             } else {
-//                currentFontSize = 30
-                
-//                if let font = textView.font {
-//                    let lineHeight = font.xHeight
-//
-//                    let preLineNumber = sizeToFit.height / lineHeight
-//                    print("lineNumber=\(preLineNumber)")
-//                    currentFontSize = preLineNumber
-                    textView.font = UIFont(name: currentFontName, size: currentFontSize)
-//                }
+                textView.font = UIFont(name: currentFontName, size: currentFontSize)
             }
             
             textView.frame.size = CGSize(width: oldFrame.width, height: sizeToFit.height)
-            
-//            textView.font = UIFont(name: currentFontName, size: currentFontSize)
         }
     }
     public func textViewDidBeginEditing(_ textView: UITextView) {
