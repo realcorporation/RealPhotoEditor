@@ -77,6 +77,7 @@ public final class PhotoEditorViewController: UIViewController {
     var textViewWidth: NSLayoutConstraint?
     var textViewHeight: NSLayoutConstraint?
     var currentTextView: UITextView?
+    var currentTextBackgroundView: UIView?
     var currentFontSize: CGFloat = 30
     var currentFontName: String = "BarlowCondensed-Regular"
     var currentTextViewTransformSaved: CGAffineTransform?

@@ -51,7 +51,7 @@ extension PhotoEditorViewController {
 
     @IBAction func textButtonTapped(_ sender: Any) {
         isTyping = true
-        let textView = UITextView(frame: CGRect(x: 0, y: canvasImageView.center.y,
+        let textView = UITextView(frame: CGRect(x: 0, y: 0,
                                                 width: UIScreen.main.bounds.width, height: 30))
         
         currentFontSize = 30
@@ -67,20 +67,26 @@ extension PhotoEditorViewController {
         textView.isScrollEnabled = false
         textView.delegate = self
         
-        self.canvasImageView.addSubview(textView)
+        let textBackgroundView = UIView(frame: CGRect(x: 0, y: canvasImageView.center.y,
+                                                      width: UIScreen.main.bounds.width, height: 30))
+        textBackgroundView.addSubview(textView)
+        
+        self.canvasImageView.addSubview(textBackgroundView)
         
         currentTextView = textView
+        currentTextBackgroundView = textBackgroundView
         
-        addGestures(view: textView)
+        addGestures(view: textBackgroundView)
         textView.becomeFirstResponder()
     }
     
     func editText(textView: UITextView) {
-        textView.transform = CGAffineTransform.identity
-        textView.frame = CGRect(x: 0, y: canvasImageView.center.y,
+        textView.superview?.transform = CGAffineTransform.identity
+        textView.superview?.frame = CGRect(x: 0, y: canvasImageView.center.y,
                                 width: UIScreen.main.bounds.width, height: maxTextViewHeight)
         
         currentTextView = textView
+        currentTextBackgroundView = textView.superview
         textView.becomeFirstResponder()
     }
     
@@ -91,6 +97,9 @@ extension PhotoEditorViewController {
         canvasImageView.isUserInteractionEnabled = true
         hideToolbar(hide: false)
         isDrawing = false
+        
+        currentTextView?.isUserInteractionEnabled = false
+        currentTextBackgroundView?.isUserInteractionEnabled = true
     }
     
     //MARK: Bottom Toolbar

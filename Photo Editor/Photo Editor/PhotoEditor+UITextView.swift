@@ -55,20 +55,24 @@ extension PhotoEditorViewController: UITextViewDelegate {
             
             let sizeToFitUpdated = textView.sizeThatFits(CGSize(width: oldFrame.width, height:CGFloat.greatestFiniteMagnitude))
             textView.frame.size = CGSize(width: oldFrame.width, height: sizeToFitUpdated.height)
+            currentTextBackgroundView?.frame.size = CGSize(width: oldFrame.width, height: sizeToFitUpdated.height)
         }
     }
+    
     public func textViewDidBeginEditing(_ textView: UITextView) {
         isTyping = true
-        lastTextViewTransform =  textView.transform
-        lastTextViewTransCenter = textView.center
+        lastTextViewTransform = textView.superview?.transform
+        lastTextViewTransCenter = textView.superview?.center
         lastTextViewFont = textView.font!
         activeTextView = textView
-        textView.superview?.bringSubviewToFront(textView)
+        if let background = textView.superview {
+            background.superview?.bringSubviewToFront(background)
+        }
         textView.font = UIFont(name: currentFontName, size: currentFontSize)
         UIView.animate(withDuration: 0.3,
                        animations: {
-                        textView.transform = CGAffineTransform.identity
-                        textView.center = CGPoint(x: UIScreen.main.bounds.width / 2,
+                        textView.superview?.transform = CGAffineTransform.identity
+                        textView.superview?.center = CGPoint(x: UIScreen.main.bounds.width / 2,
                                                   y:  UIScreen.main.bounds.height / 5)
         }, completion: nil)
         
@@ -81,10 +85,17 @@ extension PhotoEditorViewController: UITextViewDelegate {
         }
         activeTextView = nil
         textView.font = self.lastTextViewFont!
+        
+        if let textBackgroundView = self.currentTextBackgroundView {
+            var orignalRect = textBackgroundView.frame
+            orignalRect.origin.y = canvasImageView.center.y - textBackgroundView.frame.size.height / 2
+            textBackgroundView.frame = orignalRect
+        }
+        
         UIView.animate(withDuration: 0.3,
                        animations: {
-                        textView.transform = self.lastTextViewTransform!
-                        textView.center = self.lastTextViewTransCenter!
+                        textView.superview?.transform = self.lastTextViewTransform!
+                        textView.superview?.center = self.lastTextViewTransCenter!
         }, completion: nil)
     }
     

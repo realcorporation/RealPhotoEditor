@@ -16,14 +16,12 @@ extension PhotoEditorViewController {
             doneButton.isHidden = false
             colorPickerView.isHidden = false
             hideToolbar(hide: true)
-            
-            
         }
         
-        if let textView = self.currentTextView {
-            var orignalRect = textView.frame
+        if let textBackgroundView = self.currentTextBackgroundView {
+            var orignalRect = textBackgroundView.frame
             orignalRect.origin.y = canvasImageView.center.y - 216
-            textView.frame = orignalRect
+            textBackgroundView.frame = orignalRect
         }
     }
     
@@ -31,12 +29,6 @@ extension PhotoEditorViewController {
         isTyping = false
         doneButton.isHidden = true
         hideToolbar(hide: false)
-        
-//        if let textView = self.currentTextView {
-//            var orignalRect = textView.frame
-//            orignalRect.origin.y = canvasImageView.center.y
-//            textView.frame = orignalRect
-//        }
     }
     
     @objc func keyboardWillChangeFrame(_ notification: NSNotification) {
@@ -56,13 +48,6 @@ extension PhotoEditorViewController {
                            options: animationCurve,
                            animations: { self.view.layoutIfNeeded() },
                            completion: nil)
-            
-//            if let endFrame = endFrame, let textView = self.currentTextView {
-//                print("notification=\(notification)")
-//                var orignalRect = textView.frame
-//                orignalRect.origin.y = -endFrame.size.height / 2
-//                textView.frame = orignalRect
-//            }
         }
     }
 
